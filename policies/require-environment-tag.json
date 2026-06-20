@@ -1,0 +1,23 @@
+{
+  "name": "Require Environment Tag",
+  "properties": {
+    "displayName": "Require Environment Tag",
+    "policyType": "Custom",
+    "mode": "All",
+    "description": "Denies deployment of resources that do not have the Environment tag with an approved value.",
+    "metadata": {
+      "category": "Tags"
+    },
+    "policyRule": {
+      "if": {
+        "not": {
+          "field": "tags['Environment']",
+          "in": ["Development", "Testing", "Staging", "Production"]
+        }
+      },
+      "then": {
+        "effect": "deny"
+      }
+    }
+  }
+}
